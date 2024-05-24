@@ -1,4 +1,3 @@
-
 The main consideration with survivor selection is if, for each generation, we consider the current generation as well as offspring or just the offspring. The two basic fitness-bassed selections are *(μ + λ)* 
 and replacement, where there are *μ* parents and *λ* offspring.
 
