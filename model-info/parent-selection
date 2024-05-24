@@ -1,3 +1,8 @@
+The two most widely used methods of parent selection are (1) roulette wheel and (2) tournament. Both are implementations of fitness-proportional selection (FPS), whereby an individual's fitness is 
+represented as a segment of the population's total fitness.
+Downsides of FPS are that a highly fit individual can quickly dominate the landscape, leading to premature convergence. I find that a way to avoid this is using tournament selection with a large tournament size 
+to keep selection pressure high.
+
 Roulette Wheel Selection
 
 In roulette wheel selection, we calculate the total fitness of the entire population, select a target fitness, and cumulatively add the fitness of individuals until we reach the target fitness. 
