@@ -22,10 +22,16 @@ print("Ending average fitness:", g[3][-1])
 
 # Average fitness per generation
 fig1 = mpp.figure()
+mpp.title("Average Fitness per Generation")
+mpp.ylabel("Average Fitness")
+mpp.xlabel("Generation")
 mpp.plot(np.arange(0, g[1]+1, 1), g[3])
 
 # Average fitness increase per generation
 fig2 = mpp.figure()
+mpp.title("Change in Average Fitness per Generation")
+mpp.ylabel("Change in Average Fitness")
+mpp.xlabel("Generation")
 mpp.plot(np.arange(1, g[1]+1, 1), g[4])
 
 # Show figures
