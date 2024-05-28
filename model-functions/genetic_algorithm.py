@@ -1,11 +1,3 @@
-import populization_initialization as popinit
-import parent_selection as parselect
-import recombination as recomb
-import mutation as mutate
-import survivor_selection as surselect
-import fitness_function as fitfunc
-
-
 def ga(pop_size, indiv_length, parent_select, crossover, mutation, survivor_select, optimal_fitness, max_gen, verbose):
     generation = 1
     optimal_fitness_reached = False
