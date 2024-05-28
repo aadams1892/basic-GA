@@ -1,3 +1,4 @@
+import model_functions.fitness_function as fitfunc
 import random
 
 # Roulette wheel parent selection implementation
