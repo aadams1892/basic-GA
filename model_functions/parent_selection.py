@@ -1,3 +1,5 @@
+import random
+
 # Roulette wheel parent selection implementation
 def roulette_selection(pop, mp_size):
     total_fit = fitfunc.total_fitness(pop) # Get the total population's fitness
@@ -36,7 +38,6 @@ def roulette_selection(pop, mp_size):
 
     # Return the filled mating pool
     return mating_pool
-
 
 # Tournament parent selection implementation
 def tournament_selection(pop, tournament_size, mp_size):
