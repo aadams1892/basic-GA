@@ -1,5 +1,6 @@
 from matplotlib import pyplot as mpp
-import genetic-algorithm.py
+import numpy as np
+import genetic_algorithm as genalg
 
 # GA parameters
 pop_size = 10000
@@ -12,7 +13,7 @@ optimal_fitness = indiv_len
 max_gen = 300
 verbose = 1 # If you want extended information about each generation
 
-g = ga(pop_size, indiv_len, parent_selection, crossover_spec, mutation_spec, survivor_selection, optimal_fitness, max_gen, verbose)
+g = genalg.ga(pop_size, indiv_len, parent_selection, crossover_spec, mutation_spec, survivor_selection, optimal_fitness, max_gen, verbose)
 print("Highest fitness:", g[0])
 print("Generations simulated:", g[1])
 print("Average fitness increase each generation:", g[2])
