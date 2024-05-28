@@ -51,7 +51,7 @@ def sort(pop_fit):
 # Fitness function
 def fitness(pop, single):
     
-    # No population, raise error.
+    # No population, raise error
     if len(pop) == 0:
         raise ValueError("Empty population.")
 
@@ -74,7 +74,7 @@ def fitness(pop, single):
 
         return sorted_pop
 
-
+# Calculate fitness of entire population
 def total_fitness(pop):
     
     total_fit = 0
@@ -84,5 +84,6 @@ def total_fitness(pop):
     return total_fit
 
 if DEBUG:
-    pop = init(10, 10)
-    print("Fitness:", fitness(pop, False))
+    pop = init(50, 50)
+    pfit = fitness(pop, False)
+    print(pfit)
