@@ -1,10 +1,10 @@
-# Implement roulette or tournament
+# DEBUG
 roulette = 1
 tournament = 0
 DEBUG = 0
 
 # Roulette wheel implementation
-def roulette_selection(pop, mating_pool_size):
+def roulette_selection(pop, mp_size):
     total_fit = total_fitness(pop) # Get the total population's fitness
     target_fit = random.randint(1, total_fit) # Select a random value in the range of the total fitness that will determine which individual is selected
     cumulative_fit = 0 # Cumulative fitness of currently added individuals
@@ -12,7 +12,8 @@ def roulette_selection(pop, mating_pool_size):
     parent_found = False
     mating_pool = []
 
-    while len(mating_pool) < mating_pool_size:
+    # Fill the mating pool
+    while len(mating_pool) < mp_size:
 
         if DEBUG:
             print("Total:", total_fit, "Target:", target_fit)
@@ -43,6 +44,7 @@ def roulette_selection(pop, mating_pool_size):
                 print("ERROR: Parent not found.")
                 break
 
+        # Add the individual to the mating pool
         mating_pool.append(parent)
         indiv_index = 0
         parent_found = False
@@ -53,33 +55,32 @@ def roulette_selection(pop, mating_pool_size):
 
 # Tournament implementation
 def tournament_selection(pop, tournament_size, mp_size):
-    tourn_pop = []
+    tourn_pop = [] # Tournament subset
     fittest = [[None, 0], [None, 0]] # The two fittest individuals
     mating_pool = []
 
-    while len(mating_pool) != mp_size:
+    # Fill the mating pool
+    while len(mating_pool) < mp_size:
 
-        # Get subset
-        while len(tourn_pop) != tournament_size:
-            indiv_to_add = pop[random.randint(1, len(pop)-1)]
-            if indiv_to_add not in tourn_pop:
-                tourn_pop.append(indiv_to_add)
+        # Get tournament subset
+        while len(tourn_pop) < tournament_size:
+            indiv_to_add = pop[random.randint(0, len(pop)-1)]
+            tourn_pop.append(indiv_to_add)
 
         # Rank individuals in tournament
         for i in tourn_pop:
             indiv_fit = fitness(i, True)
 
             # Check if they are one of the fittest
-            if indiv_fit > fittest[0, 1]:
+            if indiv_fit > fittest[0][1]:
                 fittest[0] = [i, indiv_fit]
-            elif indiv_fit > fittest[1, 1]:
+            elif indiv_fit > fittest[1][1]:
                 fittest[1] = [i, indiv_fit]
 
         # Place winners into mating pool
-        mating_pool.append(fittest[0, 0])
-        mating_pool.append(fittest[1, 0])
+        mating_pool.append(fittest[0][0])
+        mating_pool.append(fittest[1][0])
 
-    # Return the filled mating pool
     return mating_pool
 
 
