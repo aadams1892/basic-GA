@@ -1,3 +1,4 @@
+import model_functions.fitness_function as fitfunc
 # DEBUG
 roulette = 1
 tournament = 0
@@ -5,7 +6,7 @@ DEBUG = 0
 
 # Roulette wheel parent selection implementation
 def roulette_selection(pop, mp_size):
-    total_fit = total_fitness(pop) # Get the total population's fitness
+    total_fit = fitfunc.total_fitness(pop) # Get the total population's fitness
     target_fit = random.randint(1, total_fit) # Select a random value in the range of the total fitness that will determine which individual is selected
     cumulative_fit = 0 # Cumulative fitness of currently added individuals
     indiv_index = 0
@@ -22,7 +23,7 @@ def roulette_selection(pop, mp_size):
         while not parent_found and indiv_index < len(pop):
 
             # Add the next individual's fitness to the cumulative total
-            cumulative_fit += fitness(pop[indiv_index], True)
+            cumulative_fit += fitfunc.fitness(pop[indiv_index], True)
 
             if DEBUG:
                 print("Individual:", indiv_index, "Cumulative fitness:", cumulative_fit)
@@ -69,7 +70,7 @@ def tournament_selection(pop, tournament_size, mp_size):
 
         # Rank individuals in tournament
         for i in tourn_pop:
-            indiv_fit = fitness(i, True)
+            indiv_fit = fitfunc.fitness(i, True)
 
             # Check if they are one of the fittest
             if indiv_fit > fittest[0][1]:
