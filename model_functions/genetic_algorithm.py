@@ -17,9 +17,9 @@ def ga(pop_size, indiv_length, parent_select, crossover, mutation, survivor_sele
     pop = popinit.init(pop_size, indiv_length)
     avg_fit.append(fitfunc.total_fitness(pop)/pop_size)
     fit_increase.append(0)
-
+    
+    # Genetic algorithm.
     while generation <= max_gen and not optimal_fitness_reached:
-        # Genetic algorithm.
         if verbose:
             print("Generation #" + str(generation))
 
