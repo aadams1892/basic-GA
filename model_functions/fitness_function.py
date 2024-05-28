@@ -80,4 +80,3 @@ def total_fitness(pop):
         total_fit += fitness(i, True)
 
     return total_fit
-    
