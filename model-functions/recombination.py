@@ -3,6 +3,7 @@ DEBUG = 0
 n_point = 1
 uniform = 0
 
+# n-point crossover implementation
 def n_point_crossover(p1, p2, n):
     n_indices = []
     # Get the crossover indices
