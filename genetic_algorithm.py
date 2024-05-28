@@ -1,9 +1,9 @@
-import populization-initialization.py as popinit
-import parent-selection.py as parselect
-import recombination.py as recomb
-import mutation.py as mutate
-import survivor-selection.py as surselect
-import fitness-function.py as fitfunc
+import populization_initialization as popinit
+import parent_selection as parselect
+import recombination as recomb
+import mutation as mutate
+import survivor_selection as surselect
+import fitness_function as fitfunc
 
 
 def ga(pop_size, indiv_length, parent_select, crossover, mutation, survivor_select, optimal_fitness, max_gen, verbose):
