@@ -3,6 +3,8 @@ import model_functions.parent_selection as parselect
 import model_functions.recombination as recomb
 import model_functions.mutation as mutate
 import model_functions.survivor_selection as surselect
+import model_functions.fitness_function as fitunc
+import random
 
 def ga(pop_size, indiv_length, parent_select, crossover, mutation, survivor_select, optimal_fitness, max_gen, verbose):
     generation = 1
