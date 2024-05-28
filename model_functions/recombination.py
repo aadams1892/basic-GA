@@ -1,3 +1,6 @@
+import numpy as np
+import random
+
 # n-point crossover implementation
 def n_point_crossover(p1, p2, n):
     n_indices = []
@@ -39,7 +42,6 @@ def n_point_crossover(p1, p2, n):
         offspring2 = offspring2 + p2[n_indices[-1]:]
 
     return offspring1, offspring2
-
 
 # Uniform crossover implementation
 def uniform_crossover(p1, p2):
