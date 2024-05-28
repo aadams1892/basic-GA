@@ -1,3 +1,5 @@
+import random
+
 # Insertion mutation implementation
 def insertion_mutation(indiv):
     # Get random genes
@@ -17,7 +19,6 @@ def insertion_mutation(indiv):
         mutated_indiv = indiv[:gene1+1] + [indiv[gene2]] + indiv[gene1+1:gene2] + indiv[gene2+1:]
 
     return mutated_indiv
-
 
 # Scramble mutation implementation
 def scramble_mutation(indiv, subset_size_range):
@@ -48,7 +49,6 @@ def scramble_mutation(indiv, subset_size_range):
         mutated_indiv = indiv[:gene1] + subset + indiv[gene2+1:]
 
     return mutated_indiv
-
 
 # INVERSION MUTATION CODE LARGELY TAKEN FROM MY CISC499 PROJECT REPO ON GITHUB
 
