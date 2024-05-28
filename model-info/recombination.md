@@ -18,3 +18,15 @@ n-point crossover is exactly like one-point crossover except that instead of spl
 ## Uniform crossover 
 
 Uniform crossover acts like a coinflip for each individual gene in the parents. For each gene, both parents have a 50% chance that their gene will be passed to the offspring.
+
+## Other crossover methods
+
+TBA
+
+### PMX
+
+### Edge crossover
+
+### Order crossover
+
+### Cycle crossover
