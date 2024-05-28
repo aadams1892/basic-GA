@@ -4,7 +4,7 @@ scramble = 0
 invert = 0
 DEBUG = 0
 
-# Insert mutation implementation
+# Insertion mutation implementation
 def insert_mutation(indiv):
     # Get random genes
     gene1 = random.randrange(len(indiv))
