@@ -1,8 +1,3 @@
-# DEBUG
-DEBUG = 0
-n_point = 1
-uniform = 0
-
 # n-point crossover implementation
 def n_point_crossover(p1, p2, n):
     n_indices = []
@@ -14,9 +9,6 @@ def n_point_crossover(p1, p2, n):
 
     # Sorts the indices to ensure no errors.
     n_indices = np.sort(n_indices)
-    if DEBUG:
-        print(p1, p2)
-        print(n_indices)
 
     # Create offspring
     # Add first subset
@@ -57,9 +49,6 @@ def uniform_crossover(p1, p2):
     # Coinflip to determine which parent's gene is inherited by each offspring
     for i in range(len(p1)):
         coinflip = random.randint(1,2)
-        if DEBUG:
-            print("i:", i)
-            print("parent gene:", coinflip)
 
         # Give offspring gene from p1
         if coinflip == 1:
@@ -72,19 +61,3 @@ def uniform_crossover(p1, p2):
             offspring2.append(p1[i])
 
     return offspring1, offspring2
-
-
-if DEBUG:
-    # n-point crossover
-    if n_point:
-        o1, o2 = n_point_crossover([0,0,0,0,0,0,0,0,0,0], [1,1,1,1,1,1,1,1,1,1], 4)
-
-    # Uniform crossover
-    elif uniform:
-        o1, o2 = uniform_crossover([0,0,0,0,0,0,0,0,0,0], [1,1,1,1,1,1,1,1,1,1])
-        
-    # No crossover specified
-    else:
-        raise ValueError("No crossover method specified.")
-
-    print(o1, o2)
