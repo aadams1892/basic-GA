@@ -1,4 +1,4 @@
-## GA Options
+# GA Options
 
 Below is a list of the hyperparameters and available implementations for the genetic algorithm functions.
 
