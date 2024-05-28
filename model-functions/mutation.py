@@ -5,7 +5,7 @@ invert = 0
 DEBUG = 0
 
 # Insertion mutation implementation
-def insert_mutation(indiv):
+def insertion_mutation(indiv):
     # Get random genes
     gene1 = random.randrange(len(indiv))
     gene2 = random.randrange(len(indiv))
