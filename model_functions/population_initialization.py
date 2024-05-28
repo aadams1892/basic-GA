@@ -1,7 +1,4 @@
-# Initializing a population
-import random
-DEBUG = 0
-
+# Initialize population
 def init(pop_size, indiv_length):
     indiv = []
     population = []
@@ -16,8 +13,3 @@ def init(pop_size, indiv_length):
         indiv = []
 
     return population
-
-if DEBUG:
-    test_pop = init(10, 10)
-    print(test_pop)
-    
