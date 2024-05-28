@@ -1,9 +1,3 @@
-import model_functions.fitness_function as fitfunc
-# DEBUG
-roulette = 1
-tournament = 0
-DEBUG = 0
-
 # Roulette wheel parent selection implementation
 def roulette_selection(pop, mp_size):
     total_fit = fitfunc.total_fitness(pop) # Get the total population's fitness
@@ -16,25 +10,15 @@ def roulette_selection(pop, mp_size):
     # Fill the mating pool
     while len(mating_pool) < mp_size:
 
-        if DEBUG:
-            print("Total:", total_fit, "Target:", target_fit)
-
         # Find the selected individual.
         while not parent_found and indiv_index < len(pop):
 
             # Add the next individual's fitness to the cumulative total
             cumulative_fit += fitfunc.fitness(pop[indiv_index], True)
 
-            if DEBUG:
-                print("Individual:", indiv_index, "Cumulative fitness:", cumulative_fit)
-
             # Check if we have surpassed the selected fitness
             if cumulative_fit >= target_fit:
                 # Found parent
-
-                if DEBUG:
-                    print("Parent found.")
-
                 parent = pop[indiv_index]
                 parent_found = True
 
@@ -83,20 +67,3 @@ def tournament_selection(pop, tournament_size, mp_size):
         mating_pool.append(fittest[1][0])
 
     return mating_pool
-
-
-if DEBUG:
-    population = init(25, 10)
-    # Roulette wheel
-    if roulette:
-        parent1 = roulette_selection(population)
-        parent2 = roulette_selection(population)
-
-    # Tournament
-    elif tournament:
-        mp = tournament_selection(population, 5, 20)
-        # Parents are then randomly selected from the mating pool to generate offspring
-
-    # No parent selection specified
-    else:
-        raise ValueError("No parent selection method specified.")
