@@ -1,3 +1,5 @@
+import random
+
 # Initialize population
 def init(pop_size, indiv_length):
     indiv = []
