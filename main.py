@@ -1,6 +1,6 @@
 from matplotlib import pyplot as mpp
 import numpy as np
-import genetic_algorithm as genalg
+import model_functions.genetic_algorithm as genalg
 
 # GA parameters
 pop_size = 10000
