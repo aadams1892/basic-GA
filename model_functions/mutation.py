@@ -1,9 +1,3 @@
-# DEBUG
-insert = 1
-scramble = 0
-invert = 0
-DEBUG = 0
-
 # Insertion mutation implementation
 def insertion_mutation(indiv):
     # Get random genes
@@ -13,9 +7,6 @@ def insertion_mutation(indiv):
     # Get a new gene if the genes are equal or already next to each other
     while gene1 == gene2 or gene1 == gene2-1 or gene1 == gene2+1:
         gene2 = random.randrange(len(indiv))
-
-    if DEBUG:
-        print(gene1, gene2)
 
     # Case gene1 > gene2. Move gene1 back to be next to gene2.
     if gene1 > gene2:
@@ -43,10 +34,6 @@ def scramble_mutation(indiv, subset_size_range):
         subset1 = indiv[gene1:]
         subset2 = indiv[:gene2+1]
 
-        if DEBUG:
-            print(subset1)
-            print(subset2)
-
         # Randomly scramble the subsets
         random.shuffle(subset1)
         random.shuffle(subset2)
@@ -55,9 +42,6 @@ def scramble_mutation(indiv, subset_size_range):
     # Case gene2 > gene1. No wraparound
     else:
         subset = indiv[gene1:gene2+1]
-
-        if DEBUG:
-            print(subset)
 
         # Randomly scramble the subset
         random.shuffle(subset)
@@ -82,19 +66,12 @@ def inversion_mutation(indiv, subset_size_range):
     # Check that the subset size is in range
     while abs(inversion_start - inversion_end) < subset_size_range[0] or abs(inversion_start - inversion_end) > subset_size_range[1]:
         inversion_end = random.randint(0, len(indiv)-1)
-   
-    if DEBUG:
-        print(inversion_start, inversion_end)
 
     # The inversion will wrap around the individual
     if inversion_end < inversion_start:
         inversion_subset1 = indiv[inversion_start:]
         inversion_subset2 = indiv[:inversion_end+1]
         inversion_subset = inversion_subset1 + inversion_subset2
-
-        if DEBUG:
-            print("Original subset:", inversion_subset)
-            
         inversion_subset.reverse() # Reverse the subset
 
         index_split = len(indiv) - inversion_start
@@ -108,26 +85,9 @@ def inversion_mutation(indiv, subset_size_range):
         
     # No wrap around
     else:
-        if DEBUG:
-            print("Original subset:", indiv[inversion_start:inversion_end+1])
 
         inversion_subset = indiv[inversion_start:inversion_end+1]
         inversion_subset.reverse() # Reverse the subset
         mutated_indiv = indiv[:inversion_start] + inversion_subset + indiv[inversion_end+1:]
 
-    if DEBUG:
-        print("Inverted subset:", inversion_subset)
-
     return mutated_indiv
-
-
-if DEBUG:
-    if insert:
-        print(insert_mutation([0,1,1,0,1,0,0,1,0]))
-    elif scramble:
-        print(scramble_mutation([0,1,2,3,4,5,6,7,8]))
-    elif invert:
-        print(inversion_mutation([0,1,2,3,4,5,6,7,8]))
-    else:
-        raise ValueError("No mutation method specified.")
-    
