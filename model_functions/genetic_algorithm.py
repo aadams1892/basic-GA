@@ -1,3 +1,9 @@
+import model_functions.population_initialization as popinit
+import model_functions.parent_selection as parselect
+import model_functions.recombination as recomb
+import model_functions.mutation as mutate
+import model_functions.survivor_selection as surselect
+
 def ga(pop_size, indiv_length, parent_select, crossover, mutation, survivor_select, optimal_fitness, max_gen, verbose):
     generation = 1
     optimal_fitness_reached = False
