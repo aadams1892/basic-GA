@@ -1,6 +1,5 @@
 # Basic fitnes function and merge sort
 import numpy as np
-DEBUG = 0
 
 # Merge sort
 def merge(left, right):
@@ -82,8 +81,3 @@ def total_fitness(pop):
         total_fit += fitness(i, True)
 
     return total_fit
-
-if DEBUG:
-    pop = init(50, 50)
-    pfit = fitness(pop, False)
-    print(pfit)
