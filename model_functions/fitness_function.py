@@ -1,4 +1,3 @@
-# Basic fitnes function and merge sort
 import numpy as np
 
 # Merge sort
