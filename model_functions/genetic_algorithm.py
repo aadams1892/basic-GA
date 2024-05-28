@@ -208,7 +208,7 @@ def ga(pop_size, indiv_length, parent_select, crossover, mutation, survivor_sele
             print("Highest fitness:", fitfunc.fitness(pop[0], True))
             print("\n")
 
-        # -=- Check if optimal fitness has been reached -=-
+        # -=- Check termination condition -=-
         
         # Since the population will always be sorted, we can check the first individual to see if it has reached optimal fitness.
 
