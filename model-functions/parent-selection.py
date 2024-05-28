@@ -3,7 +3,7 @@ roulette = 1
 tournament = 0
 DEBUG = 0
 
-# Roulette wheel implementation
+# Roulette wheel parent selection implementation
 def roulette_selection(pop, mp_size):
     total_fit = total_fitness(pop) # Get the total population's fitness
     target_fit = random.randint(1, total_fit) # Select a random value in the range of the total fitness that will determine which individual is selected
@@ -53,7 +53,7 @@ def roulette_selection(pop, mp_size):
     return mating_pool
 
 
-# Tournament implementation
+# Tournament parent selection implementation
 def tournament_selection(pop, tournament_size, mp_size):
     tourn_pop = [] # Tournament subset
     fittest = [[None, 0], [None, 0]] # The two fittest individuals
