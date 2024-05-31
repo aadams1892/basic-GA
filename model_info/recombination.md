@@ -21,7 +21,7 @@ Uniform crossover acts like a coinflip for each individual gene in the parents. 
 
 ## Other crossover methods
 
-The crossover methods below are more advanced implementations that would not really work for binary representations. When I say they are more advanced, I am referring to the algorithms to implement them being more complex than the ones listed above. The best way, in my opinion, to be able to explain these implementations is to use an example in the explanation.
+The crossover methods below are more advanced implementations that would not really work for binary representations.
 
 ### PMX
 
@@ -39,24 +39,37 @@ The first instance of this algorithm would be to look index 3. Index 3 of parent
 <ins>_ \_3456\_ 7 _</ins><br>
 <ins>567298134</ins><br>
 
-We then continue this process:
-
-<ins>_ \_3456\_ 72</ins><br>
-<ins>567298134</ins><br>
-
-<ins>9\_3456\_ 72</ins><br>
-<ins>567298134</ins><br>
-
-<ins>983456\_72</ins><br>
-<ins>567298134</ins><br>
-
-<ins>983456172</ins><br>
-<ins>567298134</ins><br>
+We then continue this process until every location in the offspring has been filled.
 
 The second offspring is generated in the same way, with the roles of the parents reversed.
 
 ### Edge crossover
 
+In **edge crossover**, we make an *edge table* of the two parents. This edge table can be thought of as a dictionary of key-value pairs; each key in the dictionary is a gene and the value of the gene is the list of other genes that are adjacent to that gene in both parents.
+
+For example, if two parents were <ins>987654321</ins> and <ins>128934675</ins>, one such key-value pair in the edge table would be {9: 1, 8, 8, 3}.
+
+After constructing the edge table, we randomly select a gene, append it into the offspring, and remove all reference to it from the edge table. Then, looking at the entry for this gene in the edge table and select the next gene to add based on the rules:
+1. If there is a common edge (both parents had an adjacency of the genes)
+2. The value of the gene's list that itself has the longest list of values
+3. Random selection
+
+Once the next gene has been selected, we repeat the process.
+
+NOTE: edge crossover only produces **ONE** offspring.
+
 ### Order crossover
 
+The first step of **order crossover** is to copy a random subset of parent 1 into the corresponding location in the offspring. Then, starting from the right-hand end of this subset, copy the genes that are not in the offspring according to the order they appear in the second parent, wrapping around the parent at the end.
+
+The second offspring is generated in the same way, with the roles of the parents reversed.
+ 
 ### Cycle crossover
+
+In **cycle crossover**, we divide the parents into *cycles*, which are permutations of subsets of genes of the parent values created based on their relative locations.
+
+We start with the first unused gene, *x*, in parent 1, immediately adding it to the cycle. We then look at the corresponding gene, *y*, in parent 2 and find where *y* occurs in parent 1. After finding where *y* occurs in parent 1, we look at the corresponding gene in parent 2, *z*, and add it to the cycle. We repeat this process until we get back to the gene we started with, *x*, at which point we would add *y* and end the cycle. That is, a cycle that begins with a gene at position *q* in parent 1 *must* end with the gene at position *q* in parent 2.
+
+We then create cycles until every gene is in a cycle.
+
+The construction of the offspring is as follows: for cycle 1, beginning at the first gene of parent 1, we check if that gene is in cycle 1. If it is, add it to the offspring. If it is not, we add the corresponding gene from parent 2. We do this for every cycle, alternating the role of the parents for each cycle.
